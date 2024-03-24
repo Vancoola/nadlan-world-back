@@ -101,13 +101,9 @@ CSRF_COOKIE_SAMESITE = None
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': 'd5b00af934b3536b175eebb18367329e',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'OPTIONS': {'sslmode': 'require'},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':  '/workspaces/nadlan-world-back/django_project/sql_django.sqlite3',
+
     }
 }
 
@@ -147,8 +143,8 @@ USE_TZ = True
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        # 'rest_framework.renderers.BrowsableAPIRenderer',
+        # 'rest_framework.renderers.JSONRenderer', 
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
     # 'rest_framework.authentication.SessionAuthentication',

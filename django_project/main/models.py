@@ -15,6 +15,10 @@ from django.core.exceptions import ValidationError
  #   def __str__(self):
         #return self.title
 
+DISTANCES = (
+    ('first_line', 'Первая линия'),
+    ('500', '500 Метров'),
+)
 
 class Cards(models.Model):
     title = CKEditor5Field('Название', max_length=200, config_name='title', blank=False, null=False)
@@ -22,6 +26,13 @@ class Cards(models.Model):
     desc_main = CKEditor5Field(verbose_name='Полное описание')
     country = models.ForeignKey('СountryModels', on_delete=models.CASCADE, verbose_name='Страна', related_name='country', null=True)
     city = models.ForeignKey('CityModels', on_delete=models.CASCADE, verbose_name='Город', related_name='cards', null=True)
+    
+    bedrooms = models.IntegerField(null=True)
+    price = models.IntegerField(null=True)
+    new_building = models.BooleanField(default=False)
+    hot_offers = models.BooleanField(default=False)
+    distances_to_the_sea = models.CharField(max_length=255, choices=DISTANCES, default='500')
+
 
     def size_warning(self):
         return format_html('<h1 style="color: red">{}</h1>', 'Внимание! Если размер файла превышает 500 кб, то скорость загрузки сайта будет снижена!')
